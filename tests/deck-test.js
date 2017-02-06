@@ -15,7 +15,8 @@ describe("testing deck constructor", () => {
 
   it("should add new card in deck array and check if it exists", () => {
     let card = new Card({});
-    let deck = new Deck([card]);
+    let deck = new Deck();
+    deck.addCardToDeck(card);
     expect(deck.questionDeck).to.include(card);
   });
 
@@ -23,7 +24,10 @@ describe("testing deck constructor", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau"});
     let card2 = new Card({ question: "The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", answer: "Mars"});
     let card3 = new Card({ question: "Describe in words the exact direction that is 697.5° clockwise from due north?", answer: "North north west"});
-    let deck = new Deck([card1, card2, card3]);
+    let deck = new Deck();
+    deck.addCardToDeck(card1);
+    deck.addCardToDeck(card2);
+    deck.addCardToDeck(card3);
     expect(deck.questionDeck).to.include(card1, card2, card3);
   });
 
@@ -31,7 +35,10 @@ describe("testing deck constructor", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau"});
     let card2 = new Card({ question: "The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", answer: "Mars"});
     let card3 = new Card({ question: "Describe in words the exact direction that is 697.5° clockwise from due north?", answer: "North north west"});
-    let deck = new Deck([card1, card2, card3]);
+    let deck = new Deck();
+    deck.addCardToDeck(card1);
+    deck.addCardToDeck(card2);
+    deck.addCardToDeck(card3);
     assert.equal(deck.count(), 3);
   });
 

@@ -1,6 +1,9 @@
 class Deck {
-  constructor(questionDeck) {
-    this.questionDeck = questionDeck;
+  constructor() {
+    this.questionDeck = [];
+  }
+  addCardToDeck(card) {
+    this.questionDeck.push(card);
   }
   count() {
     return this.questionDeck.length;
