@@ -1,6 +1,9 @@
 class Deck {
-  constructor() {
-
+  constructor(questionDeck) {
+    this.questionDeck = questionDeck;
+  }
+  count() {
+    return this.questionDeck.length;
   }
 }
 

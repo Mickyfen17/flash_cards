@@ -20,7 +20,7 @@ describe("testing guess constructor", () => {
   it("guess should be able to accept a question card object", () => {
     let card = new Card({});
     let guess = new Guess({ questionCard: card });
-    expect(guess.questionCard).to.be.an("object");
+    assert.isObject(guess.questionCard);
   });
 
   it("guess should be able to accept a question card and access the question through guess", () => {
