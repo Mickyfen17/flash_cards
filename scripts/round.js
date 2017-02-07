@@ -5,18 +5,26 @@ class Round {
     this.deck = cardDeck;
     this.guesses = [];
     this.count = 0;
+    this.numberCorrect = 0;
   }
   currentCard() {
-    // console.log(this.deck.questionDeck)
     return this.deck.questionDeck.shift();
-    // console.log(this.deck.questionDeck.shift());
-    // console.log(this.deck.questionDeck)
   }
   recordGuess(inputGuess) {
     let guess = new Guess({ response: inputGuess, questionCard: this.currentCard() });
     this.guesses.push(guess);
     this.count++;
-    return this.guesses[0];
+    this.correctCounter();
+  }
+  correctCounter() {
+    this.numberCorrect = 0;
+    this.guesses.forEach( guess => {
+      return guess.feedback() === "Correct!" ? this.numberCorrect++ : false;
+    });
+  }
+  percentCount() {
+    let percentage = this.numberCorrect / this.count * 100;
+    return `${Math.floor(percentage)}%`;
   }
 }
 
