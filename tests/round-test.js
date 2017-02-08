@@ -272,4 +272,27 @@ describe("testing round constructor", () => {
     expect(round.deck.questionDeck[0]).to.have.deep.property("answer", "10");
   });
 
+  it("should accept questions array from a txt file, record a correct guess and an incorrect guess and prove this", () => {
+    let cardGenerator = new CardGenerator({ cards: words});
+    let deck = new Deck({ deckArray: cardGenerator.cards });
+    let round = new Round({ cardDeck: deck});
+    let userGuess1 = "10";
+    let userGuess2 = "failed answer";
+
+    assert.equal(round.count, 0);
+    assert.equal(round.numberCorrect, 0);
+
+    round.recordGuess(userGuess1);
+    assert.equal(round.count, 1);
+    assert.equal(round.numberCorrect, 1);
+    assert.equal(round.percentCount(), "100%");
+    assert.equal(round.guesses[0].feedback(), "Correct!");
+
+    round.recordGuess(userGuess2);
+    assert.equal(round.count, 2);
+    assert.equal(round.numberCorrect, 1);
+    assert.equal(round.percentCount(), "50%");
+    assert.equal(round.guesses[1].feedback(), "Incorrect");
+  });
+
 });
