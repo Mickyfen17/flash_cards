@@ -34,4 +34,12 @@ describe("testing card generator constructor", () => {
     expect(cardGenerator).to.have.property("cards").that.is.an("array").with.deep.property("0").that.is.an("object");
   });
 
+  it("cardGenerator should split the txt file, add question and answer into Card, pass Cards into cardGenerator.cards and check for keys question and answer", () => {
+    let cardGeneratorArr = txtSpliter(words);
+    let cardGenerator = new CardGenerator({ cards: cardGeneratorArr });
+
+    expect(cardGenerator).to.have.property("cards").that.is.an("array").with.deep.property("1").that.is.an("object").with.deep.property("question");
+    expect(cardGenerator).to.have.property("cards").that.is.an("array").with.deep.property("1").that.is.an("object").with.deep.property("answer");
+  });
+
 });
