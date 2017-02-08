@@ -37,5 +37,11 @@ describe("testing card generator constructor", () => {
     expect(cardGenerator).to.have.property("cards").that.is.an("array").with.deep.property("1").that.is.an("object").with.deep.property("answer");
   });
 
+  it("cardGenerator.cards should hold an array of 4 question cards passed in from cards.txt", () => {
+    let cardGenerator = new CardGenerator({ cards: words });
+
+    expect(cardGenerator.cards).to.have.lengthOf(4);
+  });
+
 
 });
