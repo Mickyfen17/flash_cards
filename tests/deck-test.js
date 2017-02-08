@@ -8,8 +8,14 @@ describe("testing deck constructor", () => {
     assert.isFunction(Deck);
   });
 
-  it("deck should accept an array", () => {
+  it("deck should return an array as default", () => {
     let deck = new Deck({});
+
+    assert.isArray(deck.questionDeck);
+  });
+
+  it("deck should return an array as when one is passed into constructor", () => {
+    let deck = new Deck({ deckArray: [] });
 
     assert.isArray(deck.questionDeck);
   });
