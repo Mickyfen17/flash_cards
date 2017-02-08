@@ -1,6 +1,6 @@
 class CardGenerator {
-  constructor() {
-
+  constructor({ cards }) {
+    this.cards = cards;
   }
 }
 
