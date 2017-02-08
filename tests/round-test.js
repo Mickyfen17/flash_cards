@@ -11,7 +11,7 @@ describe("testing round constructor", () => {
 
   it("round.deck should hold an object", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
 
@@ -20,7 +20,7 @@ describe("testing round constructor", () => {
 
   it("round.deck.questionDeck should be an array", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
 
@@ -30,7 +30,7 @@ describe("testing round constructor", () => {
   it("round should accept a deck of cards and prove that they exist within round", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -47,7 +47,7 @@ describe("testing round constructor", () => {
   it("round should accept a deck of cards and display the first of those cards using current card", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -57,7 +57,7 @@ describe("testing round constructor", () => {
 
   it("round recordGuess should accept a userGuess that is passed into guesses array as a response on Guess constructor", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
     let userGuess = "Juneau";
@@ -68,7 +68,7 @@ describe("testing round constructor", () => {
 
   it("round guesses array should increase in length from 0 to 1 as userGuess is passed into recordGuess", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
 
@@ -80,7 +80,7 @@ describe("testing round constructor", () => {
 
   it("round count should increase from 0 to 1 as userGuess is passed into recordGuess", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
 
@@ -92,7 +92,7 @@ describe("testing round constructor", () => {
 
   it("should be able to get feedback of Correct! following correct userGuess", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
     let userGuess = "Juneau";
@@ -103,7 +103,7 @@ describe("testing round constructor", () => {
 
   it("should be able to get feedback of Incorrect following wrong userGuess", () => {
     let card1 = new Card({ question: "Which planet is closest to the sun?", answer: "Mercury" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     let round = new Round({ cardDeck: deck });
     let userGuess = "Saturn";
@@ -115,7 +115,7 @@ describe("testing round constructor", () => {
   it("numberCorrect should increase to 2 following to correct userGuesses", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -134,7 +134,7 @@ describe("testing round constructor", () => {
   it("should be able to add 2 cards to deck, run currentCard twice and prove the second card that was added is next in line", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -146,7 +146,7 @@ describe("testing round constructor", () => {
   it("should be able to add 2 cards to deck, answer one correctly, one incorrectly and check that count = 2 and numberCorrect = 1", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -168,7 +168,7 @@ describe("testing round constructor", () => {
   it("should be able to add 2 cards to deck, answer one correctly, one incorrectly and check that the feedback changes", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -185,7 +185,7 @@ describe("testing round constructor", () => {
   it("should be able to add 2 cards to deck, answer one correctly, one incorrectly and return 50% correct ratio", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let card2 = new Card({ question: "Approximately how many miles are in one astronomical unit?", answer: "93,000,000" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     let round = new Round({ cardDeck: deck });
@@ -204,7 +204,7 @@ describe("testing round constructor", () => {
     let card3 = new Card({ question: "The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", answer: "Mars" });
     let card4 = new Card({ question: "Describe in words the exact direction that is 697.5° clockwise from due north?", answer: "North north west"} );
     let card5 = new Card({ question: "Which planet is closest to the sun?", answer: "Mercury" });
-    let deck = new Deck();
+    let deck = new Deck({});
     deck.addCardToDeck(card1);
     deck.addCardToDeck(card2);
     deck.addCardToDeck(card3);

@@ -1,6 +1,6 @@
 class Deck {
-  constructor() {
-    this.questionDeck = [];
+  constructor({ deckArray }) {
+    this.questionDeck = deckArray || [];
   }
   addCardToDeck(card) {
     this.questionDeck.push(card);
