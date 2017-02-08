@@ -263,7 +263,7 @@ describe("testing round constructor", () => {
     expect(round.deck.questionDeck).to.have.lengthOf(4);
   });
 
-  it.only("should accept an array of 4 cards that have been converted from cards.txt and check that they're card objects", () => {
+  it("should accept an array of 4 cards that have been converted from cards.txt and check that they're card objects", () => {
     let cardGenerator = new CardGenerator({ cards: words});
     let deck = new Deck({ deckArray: cardGenerator.cards });
     let round = new Round({ cardDeck: deck});
