@@ -56,7 +56,7 @@ describe("testing deck constructor", () => {
     assert.equal(deck.count(), 3);
   });
 
-  it.only("should be able to accept an array of question cards that have been covered from a txt file and test the length", () => {
+  it("should be able to accept an array of question cards that have been covered from a txt file and test the length", () => {
     let cardGenerator = new CardGenerator({ cards: words });
     let deck = new Deck({ deckArray: cardGenerator.cards });
 
