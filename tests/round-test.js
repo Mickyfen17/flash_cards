@@ -2,6 +2,10 @@ import { expect, assert } from 'chai';
 import Round from "../scripts/round";
 import Deck from "../scripts/deck";
 import Card from "../scripts/card";
+import CardGenerator from "../scripts/card-generator";
+import fs from 'fs';
+
+const words = fs.readFileSync('./cards.txt', "utf8").split("\n");
 
 describe("testing round constructor", () => {
 
@@ -249,6 +253,23 @@ describe("testing round constructor", () => {
     assert.equal(round.numberCorrect, 2);
     assert.equal(round.percentCount(), "40%");
     assert.equal(round.guesses[4].feedback(), "Incorrect");
+  });
+
+  it("should accept an array of 4 cards that have been converted from cards.txt into round deck", () => {
+    let cardGenerator = new CardGenerator({ cards: words});
+    let deck = new Deck({ deckArray: cardGenerator.cards });
+    let round = new Round({ cardDeck: deck});
+
+    expect(round.deck.questionDeck).to.have.lengthOf(4);
+  });
+
+  it.only("should accept an array of 4 cards that have been converted from cards.txt and check that they're card objects", () => {
+    let cardGenerator = new CardGenerator({ cards: words});
+    let deck = new Deck({ deckArray: cardGenerator.cards });
+    let round = new Round({ cardDeck: deck});
+
+    expect(round.deck.questionDeck[0]).to.have.deep.property("question", "What is 5 + 5?");
+    expect(round.deck.questionDeck[0]).to.have.deep.property("answer", "10");
   });
 
 });
