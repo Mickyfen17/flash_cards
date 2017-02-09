@@ -8,6 +8,12 @@ describe("testing card generator constructor", () => {
     assert.isFunction(CardGenerator);
   });
 
+  it("cardGenerator should be a constructor", () => {
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
+
+    expect(cardGenerator).to.be.instanceof(CardGenerator);
+  });
+
   it("cardGenerator cards should hold an array", () => {
     let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
 

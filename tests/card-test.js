@@ -7,9 +7,15 @@ describe("testing card constructor", () => {
     assert.isFunction(Card);
   });
 
+  it("card should be a constructor", () => {
+    let card = new Card({});
+
+    expect(card).to.be.instanceof(Card);
+  });
+
   it("card should be able to accept a question", () => {
     let card = new Card({ question: "What is the capital of Alaska?" });
-    
+
     assert.equal(card.question, "What is the capital of Alaska?");
   });
 

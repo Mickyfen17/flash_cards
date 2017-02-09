@@ -8,8 +8,10 @@ describe("testing guess constructor", () => {
     assert.isFunction(Guess);
   });
 
-  it("card should also be a function", () => {
-    assert.isFunction(Card);
+  it("guess should be a constructor", () => {
+    let guess = new Guess({});
+
+    expect(guess).to.be.instanceof(Guess);
   });
 
   it("guess should be able to accept a response", () => {
@@ -71,7 +73,7 @@ describe("testing guess constructor", () => {
   it("guess should accept a question card, a correct answer and return Correct! from feedback prototype", () => {
     let card = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let guess = new Guess({ response: "Juneau", questionCard: card });
-    
+
     assert.equal(guess.feedback(), "Correct!");
   });
 

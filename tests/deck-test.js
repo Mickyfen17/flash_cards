@@ -9,6 +9,12 @@ describe("testing deck constructor", () => {
     assert.isFunction(Deck);
   });
 
+  it("deck should be a constructor", () => {
+    let deck = new Deck({});
+
+    expect(deck).to.be.instanceof(Deck);
+  });
+
   it("deck should return an array as default", () => {
     let deck = new Deck({});
 

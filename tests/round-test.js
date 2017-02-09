@@ -10,6 +10,12 @@ describe("testing round constructor", () => {
     assert.isFunction(Round);
   });
 
+  it("round should be a constructor", () => {
+    let round = new Round({});
+
+    expect(round).to.be.instanceof(Round);
+  });
+
   it("round.deck should hold an object", () => {
     let card1 = new Card({ question: "What is the capital of Alaska?", answer: "Juneau" });
     let deck = new Deck({});
