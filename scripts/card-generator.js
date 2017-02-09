@@ -1,11 +1,13 @@
 import Card from "../scripts/card";
+import fs from "fs";
 
 class CardGenerator {
-  constructor({ cards }) {
-    this.cards = this.txtSpliter(cards);
+  constructor({ filePath }) {
+    this.cards = this.txtSpliter(filePath);
   }
-  txtSpliter(txtArray) {
-    return txtArray.map( card => {
+  txtSpliter(path) {
+    const words = fs.readFileSync(`./${path}`, "utf8").split("\n");
+    return words.map( card => {
       let cardSplit = card.split(",");
       let txtQuestion = cardSplit[0];
       let txtAnswer = cardSplit[1];

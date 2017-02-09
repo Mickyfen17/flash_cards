@@ -2,9 +2,6 @@ import { expect, assert } from 'chai';
 import Deck from "../scripts/deck";
 import Card from "../scripts/card";
 import CardGenerator from "../scripts/card-generator";
-import fs from 'fs';
-
-const words = fs.readFileSync('./cards.txt', "utf8").split("\n");
 
 describe("testing deck constructor", () => {
 
@@ -57,7 +54,7 @@ describe("testing deck constructor", () => {
   });
 
   it("should be able to accept an array of question cards that have been covered from a txt file and test the length", () => {
-    let cardGenerator = new CardGenerator({ cards: words });
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
     let deck = new Deck({ deckArray: cardGenerator.cards });
 
     expect(deck.questionDeck).to.have.lengthOf(4);

@@ -3,9 +3,6 @@ import Round from "../scripts/round";
 import Deck from "../scripts/deck";
 import Card from "../scripts/card";
 import CardGenerator from "../scripts/card-generator";
-import fs from 'fs';
-
-const words = fs.readFileSync('./cards.txt', "utf8").split("\n");
 
 describe("testing round constructor", () => {
 
@@ -256,7 +253,7 @@ describe("testing round constructor", () => {
   });
 
   it("should accept an array of 4 cards that have been converted from cards.txt into round deck", () => {
-    let cardGenerator = new CardGenerator({ cards: words});
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
     let deck = new Deck({ deckArray: cardGenerator.cards });
     let round = new Round({ cardDeck: deck});
 
@@ -264,7 +261,7 @@ describe("testing round constructor", () => {
   });
 
   it("should accept an array of 4 cards that have been converted from cards.txt and check that they're card objects", () => {
-    let cardGenerator = new CardGenerator({ cards: words});
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
     let deck = new Deck({ deckArray: cardGenerator.cards });
     let round = new Round({ cardDeck: deck});
 
@@ -273,7 +270,30 @@ describe("testing round constructor", () => {
   });
 
   it("should accept questions array from a txt file, record a correct guess and an incorrect guess and prove this", () => {
-    let cardGenerator = new CardGenerator({ cards: words});
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
+    let deck = new Deck({ deckArray: cardGenerator.cards });
+    let round = new Round({ cardDeck: deck});
+    let userGuess1 = "10";
+    let userGuess2 = "failed answer";
+
+    assert.equal(round.count, 0);
+    assert.equal(round.numberCorrect, 0);
+
+    round.recordGuess(userGuess1);
+    assert.equal(round.count, 1);
+    assert.equal(round.numberCorrect, 1);
+    assert.equal(round.percentCount(), "100%");
+    assert.equal(round.guesses[0].feedback(), "Correct!");
+
+    round.recordGuess(userGuess2);
+    assert.equal(round.count, 2);
+    assert.equal(round.numberCorrect, 1);
+    assert.equal(round.percentCount(), "50%");
+    assert.equal(round.guesses[1].feedback(), "Incorrect");
+  });
+
+  it("should accept questions array from a txt file, record a correct guess and an incorrect guess and prove this", () => {
+    let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
     let deck = new Deck({ deckArray: cardGenerator.cards });
     let round = new Round({ cardDeck: deck});
     let userGuess1 = "10";
