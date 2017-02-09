@@ -39,5 +39,10 @@ describe("testing card generator constructor", () => {
     expect(cardGenerator.cards).to.have.lengthOf(4);
   });
 
+  it("cardGenerator.cards be able to accept different txt file of 3 questons", () => {
+    let cardGenerator = new CardGenerator({ filePath: "cards2.txt" });
+
+    expect(cardGenerator.cards).to.have.lengthOf(3);
+  });
 
 });

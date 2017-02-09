@@ -269,6 +269,15 @@ describe("testing round constructor", () => {
     expect(round.deck.questionDeck[0]).to.have.deep.property("answer", "10");
   });
 
+  it("should accept an array of 3 cards that have been converted from cards2.txt and check that they're card objects", () => {
+    let cardGenerator = new CardGenerator({ filePath: "cards2.txt" });
+    let deck = new Deck({ deckArray: cardGenerator.cards });
+    let round = new Round({ cardDeck: deck});
+
+    expect(round.deck.questionDeck[0]).to.have.deep.property("question", "What is the capital of England?");
+    expect(round.deck.questionDeck[0]).to.have.deep.property("answer", "London");
+  });
+
   it("should accept questions array from a txt file, record a correct guess and an incorrect guess and prove this", () => {
     let cardGenerator = new CardGenerator({ filePath: "cards.txt" });
     let deck = new Deck({ deckArray: cardGenerator.cards });
